@@ -20,7 +20,6 @@ var getPrimeNumbers = function () {
     var number = $("number").value;
     var primeList = "";
     var primeCount = 0;
-    var primeArray = [];
     var returnedNumber;
     for (var i = 2; i < number; i++) {
         returnedNumber = isPrime(i);
@@ -37,7 +36,6 @@ var getPrimeNumbers = function () {
 
 
 var processEntries = function () {
-    // determineIfPrime();
     getPrimeNumbers();
 };
 
