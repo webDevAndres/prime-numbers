@@ -1,39 +1,47 @@
 "use strict";
-var $ = function(id) {
+var $ = function (id) {
     return document.getElementById(id);
 };
 
-var isPrime = function(primeNumber) {
+var isPrime = function (primeNumber) {
     var number = primeNumber;
-    for (var i = 2; i < number; i++){
-        if ( number % i === 0) {
-            number = 0;
-        } else {
-            number = primeNumber;
+    var prime = true;
+    for (var i = 2; i < number; i++) {
+       if(number % i === 0){
+           prime = false;
+           break;
+       }
+    }
+    return (prime) ? number : 0;
+
+};
+
+var getPrimeNumbers = function () {
+    var number = $("number").value;
+    var primeList = "";
+    var primeCount = 0;
+    var primeArray = [];
+    var returnedNumber;
+    for (var i = 2; i < number; i++) {
+        returnedNumber = isPrime(i);
+        if (returnedNumber !== 0) {
+            primeList = primeList + returnedNumber + " ";
+            primeCount++;
         }
     }
-    return number;
+
+    $("count").value = primeCount;
+    $("primes").value = primeList;
+
 };
 
-var determineIfPrime = function() {
-    var number = $("number").value;
-        number = isPrime(number);
-    var textarea = $("primes");
-    var message;
-        if (number === 0) {
-            message =" is prime.";
-        } else {
-            message =" is not prime";
-        }
 
-    textarea.value = message;
-}
-
-var processEntries = function() {
-    determineIfPrime();
+var processEntries = function () {
+    // determineIfPrime();
+    getPrimeNumbers();
 };
 
-window.onload = function() {
+window.onload = function () {
     $("calculate").onclick = processEntries;
     $("number").focus();
 };
