@@ -7,13 +7,12 @@ var isPrime = function (primeNumber) {
     var number = primeNumber;
     var prime = true;
     for (var i = 2; i < number; i++) {
-       if(number % i === 0){
-           prime = false;
-           break;
-       }
+        if (number % i === 0) {
+            prime = false;
+            break;
+        }
     }
     return (prime) ? number : 0;
-
 };
 
 var getPrimeNumbers = function () {
@@ -31,12 +30,13 @@ var getPrimeNumbers = function () {
 
     $("count").value = primeCount;
     $("primes").value = primeList;
-
 };
 
 
 var processEntries = function () {
     getPrimeNumbers();
+    $("number").focus();
+
 };
 
 window.onload = function () {
